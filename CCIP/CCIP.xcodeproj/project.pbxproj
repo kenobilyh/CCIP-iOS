@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0037C7FD1D6869D00090DAD1 /* CCPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0037C7FC1D6869D00090DAD1 /* CCPullToRefreshView.m */; };
+		0037C7FF1D686C810090DAD1 /* CCPullToRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0037C7FE1D686C810090DAD1 /* CCPullToRefreshView.xib */; };
 		141D4150DB8FC2366FDFDF75 /* Pods-CCIP-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A729E7D04006FECCCCCFAEEC /* Pods-CCIP-metadata.plist */; };
 		2821DA9D1D3DCA5500AFE139 /* ProgramDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */; };
 		2821DAA21D3DCB2300AFE139 /* ProgramDetailViewTopBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2821DA9F1D3DCB2300AFE139 /* ProgramDetailViewTopBG.png */; };
@@ -151,6 +153,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0037C7FB1D6869D00090DAD1 /* CCPullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCPullToRefreshView.h; path = AppDevKitDemo/CCPullToRefreshView.h; sourceTree = "<group>"; };
+		0037C7FC1D6869D00090DAD1 /* CCPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCPullToRefreshView.m; path = AppDevKitDemo/CCPullToRefreshView.m; sourceTree = "<group>"; };
+		0037C7FE1D686C810090DAD1 /* CCPullToRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CCPullToRefreshView.xib; path = AppDevKitDemo/CCPullToRefreshView.xib; sourceTree = "<group>"; };
 		1E39488D2E9378322A78E57B /* Pods-CCIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCIP.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCIP/Pods-CCIP.release.xcconfig"; sourceTree = "<group>"; };
 		2821DA9A1D3DCA5500AFE139 /* ProgramDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramDetailViewController.h; sourceTree = "<group>"; };
 		2821DA9B1D3DCA5500AFE139 /* ProgramDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramDetailViewController.m; sourceTree = "<group>"; };
@@ -416,6 +421,9 @@
 				28ACA9A01D5E92AD002A6419 /* NSData+CommonCrypto.m */,
 				28A7C5651D5F84FB0079BB12 /* NSData+PMUtils.h */,
 				28A7C5661D5F84FB0079BB12 /* NSData+PMUtils.m */,
+				0037C7FB1D6869D00090DAD1 /* CCPullToRefreshView.h */,
+				0037C7FC1D6869D00090DAD1 /* CCPullToRefreshView.m */,
+				0037C7FE1D686C810090DAD1 /* CCPullToRefreshView.xib */,
 			);
 			name = "Class+addition";
 			sourceTree = "<group>";
@@ -784,6 +792,7 @@
 				28A7C55F1D5EE0C30079BB12 /* Project_Info_and_Contributors.json in Resources */,
 				5FB4D4671D3A8706005BF382 /* icon_ios_chat@2x.png in Resources */,
 				5FB4D4791D3A8DF6005BF382 /* icon_ios_more@2x.png in Resources */,
+				0037C7FF1D686C810090DAD1 /* CCPullToRefreshView.xib in Resources */,
 				5FB4D4861D3A998C005BF382 /* coscup-logo@3x.png in Resources */,
 				288D3A9F1D59AB4800E4E3A6 /* QR_Code@2x.png in Resources */,
 				28A9362D1D62CED800CBCA54 /* ToolButton-GitHub_Filled.png in Resources */,
@@ -893,6 +902,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0037C7FD1D6869D00090DAD1 /* CCPullToRefreshView.m in Sources */,
 				6BB50FB31D665393002CAD0B /* AfterEventViewController.m in Sources */,
 				28A7C5621D5F1AD90079BB12 /* DeepCopy.m in Sources */,
 				5FB4D48F1D3B242C005BF382 /* MoreCell.m in Sources */,

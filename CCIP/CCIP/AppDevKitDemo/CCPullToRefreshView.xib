@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CCPullToRefreshView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SkJ-sb-psp">
+                    <rect key="frame" x="0.0" y="13" width="37" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="37" id="YQj-NR-reI"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zta-Hf-U3i">
+                    <rect key="frame" x="162.5" y="0.0" width="30" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="Kxb-ry-iA7"/>
+                        <constraint firstAttribute="height" constant="13" id="NRU-Lf-HYr"/>
+                        <constraint firstAttribute="width" constant="30" id="iwa-bU-Txi"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Kxb-ry-iA7"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zf9-57-Fh6">
+                    <rect key="frame" x="337" y="13" width="38" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="38" id="PSj-H4-grQ"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="zf9-57-Fh6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="JH0-D6-2Ms"/>
+                <constraint firstAttribute="bottom" secondItem="SkJ-sb-psp" secondAttribute="bottom" constant="5" id="TJN-es-Pxh"/>
+                <constraint firstItem="SkJ-sb-psp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="Teh-xf-0QC"/>
+                <constraint firstItem="Zta-Hf-U3i" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-10" id="b5V-xe-nAI"/>
+                <constraint firstAttribute="bottom" secondItem="zf9-57-Fh6" secondAttribute="bottom" constant="5" id="fg0-5c-QKK"/>
+                <constraint firstAttribute="trailing" secondItem="zf9-57-Fh6" secondAttribute="trailing" id="gvX-TM-ZDG"/>
+                <constraint firstItem="SkJ-sb-psp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hga-Ua-dIT"/>
+                <constraint firstItem="Zta-Hf-U3i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lwr-qO-vSd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="leftAnimationView" destination="SkJ-sb-psp" id="aWN-3N-6Pa"/>
+                <outlet property="rightAnimationView" destination="zf9-57-Fh6" id="Zyn-O7-6hq"/>
+                <outlet property="topAnimationView" destination="Zta-Hf-U3i" id="y3Y-D0-BT9"/>
+            </connections>
+            <point key="canvasLocation" x="301.5" y="317"/>
+        </view>
+    </objects>
+</document>
