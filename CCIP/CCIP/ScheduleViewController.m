@@ -7,6 +7,7 @@
 //
 
 #import <CoreText/CoreText.h>
+#import <AppDevKit/UIImage+ADKImageFilter.h>
 #import "UISegmentedControl+addition.h"
 #import "NSInvocation+addition.h"
 #import "GatewayWebService/GatewayWebService.h"
@@ -17,6 +18,7 @@
 #import "BLKDelegateSplitter.h"
 #import "SquareCashStyleBehaviorDefiner.h"
 #import "ScheduleViewCell.h"
+#import "CCPullToRefreshView.h"
 
 #define TOOLBAR_MIN_HEIGHT  (22.0f)
 #define TOOLBAR_HEIGHT      (44.0f)
@@ -117,13 +119,13 @@
     // ... setting up the RefreshControl here ...
     UITableViewController *tableViewController = [UITableViewController new];
     tableViewController.tableView = self.tableView;
-    self.refreshControl = [UIRefreshControl new];
-    [self.refreshControl addTarget:self
-                            action:@selector(refreshData)
-                  forControlEvents:UIControlEventValueChanged];
-    tableViewController.refreshControl = self.refreshControl;
-    
-    [self refreshData];
+//    self.refreshControl = [UIRefreshControl new];
+//    [self.refreshControl addTarget:self
+//                            action:@selector(refreshData)
+//                  forControlEvents:UIControlEventValueChanged];
+//    tableViewController.refreshControl = self.refreshControl;
+//    
+//    [self refreshData];
     
     SEND_GAI(@"ScheduleViewController");
     
@@ -131,6 +133,32 @@
                                              selector:@selector(appplicationDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent
+{
+    [super didMoveToParentViewController:parent];
+    if (!parent) {
+        return;
+    }
+    
+    [self setupPullToRefreshView];
+    [self.tableView ADKTriggerPullToRefresh];
+}
+
+- (void)setupPullToRefreshView
+{
+    self.tableView.alwaysBounceVertical = YES;
+    UIImage *coscupImage = [UIImage imageNamed:@"coscup-logo"];
+    CCPullToRefreshView *pullToRefreshView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([CCPullToRefreshView class]) owner:self options:nil] lastObject];
+    pullToRefreshView.leftAnimationView.image = [coscupImage ADKCropRect:CGRectMake(0.0f, 13.0f, 37.0f, 13.0f)];
+    pullToRefreshView.rightAnimationView.image = [coscupImage ADKCropRect:CGRectMake(37.0f, 13.0f, 39.5f, 13.0f)];
+    pullToRefreshView.topAnimationView.image = [coscupImage ADKCropRect:CGRectMake(17.0f, 0.0f, 30.0f, 13.0f)];
+    
+    __weak ScheduleViewController *weakSelf = self;
+    [self.tableView ADKAddPullToRefreshWithHandleView:pullToRefreshView actionHandler:^{
+        [weakSelf refreshData];
+    }];
 }
 
 - (void)goToSchedule {
@@ -265,12 +293,14 @@
     [self.refreshControl beginRefreshing];
     self.refreshingCountDown = 3;
     
+    __weak ScheduleViewController *weakSelf = self;
     GatewayWebService *roome_ws = [[GatewayWebService alloc] initWithURL:ROOM_DATA_URL];
     [roome_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
             self.rooms = json;
         }
-        [self endRefreshingWithCountDown];
+        [weakSelf endRefreshingWithCountDown];
+        [weakSelf.tableView.pullToRefreshContentView stopAnimating];
     }];
     
     GatewayWebService *program_ws = [[GatewayWebService alloc] initWithURL:PROGRAM_DATA_URL];
