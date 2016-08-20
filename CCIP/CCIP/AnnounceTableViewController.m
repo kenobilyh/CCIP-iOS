@@ -13,6 +13,7 @@
 #import "CCPullToRefreshView.h"
 #import <SafariServices/SafariServices.h>
 #import <AppDevKit/UIImage+ADKImageFilter.h>
+#import <AppDevKit/ADKStringHelper.h>
 
 @interface AnnounceTableViewController ()
 
@@ -125,10 +126,14 @@
     NSString *uri = [announce objectForKey:@"uri"];
     [cell setAccessoryType:(!uri || [uri isEqualToString:@""]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryDisclosureIndicator];
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+//    NSNumber *datetime = [announce objectForKey:@"datetime"];
+//    NSString *strDate = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[datetime doubleValue]]];
+    
     NSNumber *datetime = [announce objectForKey:@"datetime"];
-    NSString *strDate = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[datetime doubleValue]]];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[datetime doubleValue]];
+    NSString *strDate = ADKGetDateCompareDescriptionWithDate(date);
     
     [cell.msgTime setText:strDate];
 }

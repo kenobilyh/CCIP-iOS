@@ -8,6 +8,7 @@
 
 #import "ProgramAbstractViewController.h"
 #import <MMMarkdown/MMMarkdown.h>
+#import <AppDevKit/ADKStringHelper.h>
 
 @interface ProgramAbstractViewController ()
 
@@ -53,7 +54,8 @@
     endTime_str = [formatter_s stringFromDate:endTime];
     
     static NSString *timeInfoStr;
-    timeInfoStr = [NSString stringWithFormat:@"%@ ~ %@", startTime_str, endTime_str];
+    NSString *dateCompareString = ADKGetFullDateCompareDescriptionWithDate(startTime, YES);
+    timeInfoStr = [NSString stringWithFormat:@"%@ ~ %@ (%@)", startTime_str, endTime_str, dateCompareString];
     
     [self.timeInfo setText:timeInfoStr];
     
