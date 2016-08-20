@@ -10,8 +10,9 @@
 #import "GatewayWebService/GatewayWebService.h"
 #import "AnnounceTableViewController.h"
 #import "AnnounceTableViewCell.h"
+#import "CCPullToRefreshView.h"
 #import <SafariServices/SafariServices.h>
-#import <AppDevKit/AppDevKit.h>
+#import <AppDevKit/UIImage+ADKImageFilter.h>
 
 @interface AnnounceTableViewController ()
 
@@ -32,16 +33,16 @@
     self.shimmeringLogoView.contentView = logoView;
     self.navigationItem.titleView = self.shimmeringLogoView;
     
-    if (self.refreshControl == nil) {
-        self.refreshControl = [[UIRefreshControl alloc] init];
-        [self.refreshControl addTarget:self
-                                action:@selector(refresh)
-                      forControlEvents:UIControlEventValueChanged];
-        [self.announceTableView addSubview:self.refreshControl];
-        
-        [self refresh];
-        [self.refreshControl beginRefreshing];
-    }
+//    if (self.refreshControl == nil) {
+//        self.refreshControl = [[UIRefreshControl alloc] init];
+//        [self.refreshControl addTarget:self
+//                                action:@selector(refresh)
+//                      forControlEvents:UIControlEventValueChanged];
+//        [self.announceTableView addSubview:self.refreshControl];
+//        
+//        [self refresh];
+//        [self.refreshControl beginRefreshing];
+//    }
     
     SEND_GAI(@"AnnounceTableViewController");
 }
@@ -51,13 +52,31 @@
     [AppDelegate setDevLogo:self.shimmeringLogoView];
 }
 
+- (void)didMoveToParentViewController:(UIViewController *)parent
+{
+    [super didMoveToParentViewController:parent];
+    if (!parent) {
+        return;
+    }
+    
+    [self setupPullToRefreshView];
+    [self.announceTableView ADKTriggerPullToRefresh];
+}
+
+- (void)dealloc
+{
+    self.announceTableView.showPullToRefresh = NO;
+}
+
 - (void)refresh {
+    __weak AnnounceTableViewController *weakSelf = self;
     GatewayWebService *annoounce_ws = [[GatewayWebService alloc] initWithURL:CC_ANNOUNCEMENT];
     [annoounce_ws sendRequest:^(NSArray *json, NSString *jsonStr, NSURLResponse *response) {
         if (json != nil) {
-            self.announceJsonArray = json;
-            [self.announceTableView reloadData];
-            [self.refreshControl endRefreshing];
+            weakSelf.announceJsonArray = json;
+            [weakSelf.announceTableView reloadData];
+            [weakSelf.announceTableView.pullToRefreshContentView stopAnimating];
+//            [weakSelf.refreshControl endRefreshing];
         }
     }];
 }
@@ -65,6 +84,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setupPullToRefreshView
+{
+    self.announceTableView.alwaysBounceVertical = YES;
+    UIImage *coscupImage = [UIImage imageNamed:@"coscup-logo"];
+    CCPullToRefreshView *pullToRefreshView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([CCPullToRefreshView class]) owner:self options:nil] lastObject];
+    pullToRefreshView.leftAnimationView.image = [coscupImage ADKCropRect:CGRectMake(0.0f, 13.0f, 37.0f, 13.0f)];
+    pullToRefreshView.rightAnimationView.image = [coscupImage ADKCropRect:CGRectMake(37.0f, 13.0f, 39.5f, 13.0f)];
+    pullToRefreshView.topAnimationView.image = [coscupImage ADKCropRect:CGRectMake(17.0f, 0.0f, 30.0f, 13.0f)];
+    
+    __weak AnnounceTableViewController *weakSelf = self;
+    [self.announceTableView ADKAddPullToRefreshWithHandleView:pullToRefreshView actionHandler:^{
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf refresh];
+//        });
+        
+    }];
 }
 
 # pragma mark - UITableViewControllerDelegate
