@@ -11,6 +11,7 @@
 #import "AnnounceTableViewController.h"
 #import "AnnounceTableViewCell.h"
 #import <SafariServices/SafariServices.h>
+#import <AppDevKit/AppDevKit.h>
 
 @interface AnnounceTableViewController ()
 

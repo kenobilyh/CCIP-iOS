@@ -1,19 +1,34 @@
 PODS:
+  - AppDevKit (1.0.2):
+    - AppDevKit/AppDevAnimateKit (= 1.0.2)
+    - AppDevKit/AppDevCommonKit (= 1.0.2)
+    - AppDevKit/AppDevImageKit (= 1.0.2)
+    - AppDevKit/AppDevListViewKit (= 1.0.2)
+    - AppDevKit/AppDevUIKit (= 1.0.2)
+  - AppDevKit/AppDevAnimateKit (1.0.2)
+  - AppDevKit/AppDevCommonKit (1.0.2)
+  - AppDevKit/AppDevImageKit (1.0.2):
+    - AppDevKit/AppDevCommonKit
+  - AppDevKit/AppDevListViewKit (1.0.2):
+    - AppDevKit/AppDevCommonKit
+    - AppDevKit/AppDevUIKit
+  - AppDevKit/AppDevUIKit (1.0.2):
+    - AppDevKit/AppDevCommonKit
   - BLKFlexibleHeightBar (1.0.2)
   - ColorArt (0.1.1)
   - CPDAcknowledgements (1.0.0)
-  - FirebaseAnalytics (3.2.1):
+  - FirebaseAnalytics (3.3.0):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
-    - GoogleUtilities (~> 1.3)
-  - FirebaseInstanceID (1.0.7)
+    - GoogleUtilities (~> 1.2)
+  - FirebaseInstanceID (1.0.8)
   - Google/Analytics (3.0.3):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
   - Google/Core (3.0.3):
     - FirebaseAnalytics (~> 3.2)
-  - GoogleAnalytics (3.14.0)
+  - GoogleAnalytics (3.16.0)
   - GoogleInterchangeUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
   - GoogleSymbolUtilities (1.1.1)
@@ -21,7 +36,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
   - iCarousel (1.8.2)
   - ICViewPager (1.5.1)
-  - iRate (1.11.5)
+  - iRate (1.11.6)
   - iVersion (1.11.4)
   - MMMarkdown (0.5.5)
   - NJKWebViewProgress (0.2.3):
@@ -34,10 +49,11 @@ PODS:
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
   - Shimmer (1.0.2)
-  - STPopup (1.7.0)
+  - STPopup (1.8.0)
   - UICKeyChainStore (2.1.0)
 
 DEPENDENCIES:
+  - AppDevKit
   - BLKFlexibleHeightBar
   - ColorArt (= 0.1.1)
   - CPDAcknowledgements (~> 1.0)
@@ -48,7 +64,7 @@ DEPENDENCIES:
   - iVersion (from `https://github.com/FrankWu100/iVersion`)
   - MMMarkdown (~> 0.5)
   - NJKWebViewProgress (~> 0.2)
-  - OneSignal
+  - OneSignal (= 1.13.3)
   - SDWebImage (~> 3.8)
   - Shimmer (~> 1.0)
   - STPopup (~> 1.7)
@@ -69,28 +85,29 @@ CHECKOUT OPTIONS:
     :git: https://github.com/FrankWu100/iVersion
 
 SPEC CHECKSUMS:
+  AppDevKit: b357311b0a4bfd3b9d5ab268e62081998aec884f
   BLKFlexibleHeightBar: b27572a69633d8e33f1f2bbc486b04d8e86f742d
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   CPDAcknowledgements: 6e15e71849ba4ad5e8a17a0bb9d20938ad23bac8
-  FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
-  FirebaseInstanceID: a9d923f3d0b6fbf9fac89310860357aaadc34be5
+  FirebaseAnalytics: 228be2991cb28efb96cdafc4d62f64680e615c69
+  FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
-  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  GoogleAnalytics: 3de986b2fa29012c69fa415566006a9c9cf25320
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
   ICViewPager: c1278b67eceac7252d48252829c3c703285dfb76
-  iRate: 1546f8ae5ed1565e688bd529f7484780734757e9
+  iRate: 61e558919c4a7fde63b3c22ebbd6c114a1eee658
   iVersion: 2b6ffe708672cb494ba3cab150a94800c2892e81
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  STPopup: 36b45120f51ab3cdf7a10c1b9032b7fc8eef75ac
+  STPopup: af630a85628e4226ffcbda5caaead0d99aed13a8
   UICKeyChainStore: f1cbd42216a113f0165de1e733e62905b8823432
 
-PODFILE CHECKSUM: 2dffb2d825bacab0f8bf03ee7ea9d23162783ac3
+PODFILE CHECKSUM: 340f18f12759d6b886db20b36b1685245e4a0742
 
 COCOAPODS: 1.0.1

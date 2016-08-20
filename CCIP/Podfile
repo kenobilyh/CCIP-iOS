@@ -8,7 +8,7 @@ target 'CCIP' do
   use_frameworks!
 
   # Pods for CCIP
-  pod 'OneSignal'
+  pod 'OneSignal', '1.13.3'
   pod 'UICKeyChainStore', '~> 2.1'
   pod 'Google/Analytics'
   pod 'ICViewPager', :git => 'https://github.com/FrankWu100/ICViewPager'
@@ -23,4 +23,5 @@ target 'CCIP' do
   pod 'CPDAcknowledgements', '~> 1.0'
   pod 'NJKWebViewProgress', '~> 0.2'
   pod 'iVersion', :git => 'https://github.com/FrankWu100/iVersion'
+  pod 'AppDevKit'
 end
